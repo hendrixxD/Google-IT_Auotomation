@@ -12,35 +12,33 @@ class Elevator:
 
     def up(self):
         """Makes the elevator go up one floor."""
-        self.top = self.top + 1
-        self.current = self.top
-        print(str(self.current))
+        if self.current < 10:
+            self.top = self.top + 1
+            self.current = self.top
 
     def down(self):
         """Makes the elevator go down one floor."""
         self.bottom = self.top - 1
         self.current = self.bottom
-        return self.current
 
     def go_to(self, floor):
 
         """Makes the elevator go to the specific floor."""
         if floor == 0:
             self.current = floor
-            print(f"current floor: {str(self.current)}")
 
         elif floor > 0:
             """Makes the elevator go UP the specified floor."""
             self.top = floor
-            self.current = (self.top)
-            print(f"current floor: {str(self.current)}")
+            self.current = self.top
 
         else:
             """Makes the elevator go DOWN the specified floor."""
             self.bottom = self.top - floor
             self.current = self.bottom
-            print(f"current floor: {str(self.current)}")
 
+    def __str__(self):
+        return f"current floor:{self.current}"
 
 elevator = Elevator(-1, 10, 0)
 
